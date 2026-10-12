@@ -22,32 +22,34 @@ public class PlayerMovement : MonoBehaviour
         decceleration = maxSpeed / deccelerationTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Movement();
+        LookAtMouse();
+        StayWithinScreenBounds();
     }
 
     private void Movement()
     {
-        /*        direction = Vector3.zero;
+        direction = Vector3.zero;
 
-            if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
-            {
-                direction += Vector3.up;
-            }
-            if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
-            {
-                direction += Vector3.down;
-            }
-            if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
-            {
-                direction += Vector3.left;
-            }
-            if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
-            {
-                direction += Vector3.right;
-            }
-    */
+        if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.wKey.isPressed)
+        {
+            direction += Vector3.up;
+        }
+        if (Keyboard.current.downArrowKey.isPressed || Keyboard.current.sKey.isPressed)
+        {
+            direction += Vector3.down;
+        }
+        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
+        {
+            direction += Vector3.left;
+        }
+        if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
+        {
+            direction += Vector3.right;
+        }
+
 
         if (!Keyboard.current.anyKey.isPressed)
         {
@@ -70,6 +72,43 @@ public class PlayerMovement : MonoBehaviour
         Vector3 lookDirection = (mousePosition - transform.position).normalized;
 
         transform.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
+    }
+    private void StayWithinScreenBounds()
+    {
+        float screenLeft = 0;
+        float screenRight = Screen.width;
+        float screenBottom = 0;
+        float screenTop = Screen.height;
+
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+
+        if(screenPosition.x < screenLeft)
+        {
+            screenPosition.x = screenLeft;
+
+            velocity.x = 0;
+        }
+        else if (screenPosition.x > screenRight)
+        {
+            screenPosition.x = screenRight;
+            
+            velocity.x = 0;
+        }
+
+        if(screenPosition.y < screenBottom)
+        {
+            screenPosition.y = screenBottom;
+            
+            velocity.y = 0;
+        }
+        else if (screenPosition.y > screenTop)
+        {
+            screenPosition.y = screenTop;
+            
+            velocity.y = 0;
+        }
+
+        transform.position = Camera.main.ScreenToWorldPoint(screenPosition);
     }
 }
 

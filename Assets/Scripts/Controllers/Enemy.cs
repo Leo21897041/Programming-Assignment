@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Task 2")]
+    [Header("Position & Speed")]
     public Transform playerTransform;
     public Vector3 direction;
     public Vector3 velocity;
@@ -29,20 +29,23 @@ public class Enemy : MonoBehaviour
 
     private void EnemyMovement()
     {
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
-
-        if (distance < minDistance)
+        if(playerTransform != null)
         {
-            direction = (playerTransform.position - transform.position).normalized;
+            float distance = Vector3.Distance(transform.position, playerTransform.position);
 
-            velocity += direction * acceleration * Time.deltaTime;
+            if (distance < minDistance)
+            {
+                direction = (playerTransform.position - transform.position).normalized;
 
-            transform.position += Time.deltaTime * velocity;
-        }
-        else
-        {
-            velocity -= velocity.normalized * decceleration * Time.deltaTime;
-            transform.position += Time.deltaTime * velocity;
+                velocity += direction * acceleration * Time.deltaTime;
+
+                transform.position += Time.deltaTime * velocity;
+            }
+            else
+            {
+                velocity -= velocity.normalized * decceleration * Time.deltaTime;
+                transform.position += Time.deltaTime * velocity;
+            }
         }
     }
 }

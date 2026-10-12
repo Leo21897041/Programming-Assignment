@@ -4,14 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerShooter : MonoBehaviour
 {
     public GameObject missilePrefab;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
-
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            SpawnMissile();
+        }
     }
     public void SpawnMissile()
     {
