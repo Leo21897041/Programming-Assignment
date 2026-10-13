@@ -26,20 +26,21 @@ public class PowerUpMovement : MonoBehaviour
         angle += Time.deltaTime * speed;
         
         if (!isLaunched)
-        {                        
-            position = playerTransform.position + circlePosition;
-        
-            if (speed > maxSpeed * 1.5f)
+        {        
+            if (speed > maxSpeed * 1.5f || playerTransform == null)
             {
                 isLaunched = true;
 
                 direction = circlePosition.normalized;
             }
+            else
+            {
+                position = playerTransform.position + circlePosition;
+            }
         }
-
         else
         {
-            position += direction * (speed / 10)* Time.deltaTime;
+            position += direction * (speed / 10) * Time.deltaTime;
         }
 
         transform.position = position;
