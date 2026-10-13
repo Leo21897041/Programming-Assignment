@@ -3,22 +3,34 @@ using UnityEngine;
 public class MissileCollisions : MonoBehaviour
 {
     public GameObject destroyParticles;
+    public PlayerManager playerManager;
+
+    private void Start()
+    {
+        playerManager = FindFirstObjectByType<PlayerManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Asteroid"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            Destroyed(collision);
 
-            Instantiate(destroyParticles, collision.transform.position, Quaternion.identity);
+            playerManager.numberOfAsteroidsDestroyed++;
         }
 
         if (collision.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-
-            Instantiate(destroyParticles, collision.transform.position, Quaternion.identity);
+            Destroyed(collision);
         }
+    }
+
+    private void Destroyed(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
+
+        Instantiate(destroyParticles, collision.transform.position, Quaternion.identity);
+        Instantiate(destroyParticles, transform.position, Quaternion.identity);
     }
 }
