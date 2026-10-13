@@ -8,7 +8,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerPowerUp playerPowerUp;
 
     public int numberOfAsteroidsDestroyed;
-    private void Start()
+
+   private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerShooter = GetComponent<PlayerShooter>();

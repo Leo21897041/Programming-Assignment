@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Missile
   - Asteroid
   - Enemy
   - Power Up
+  - Enemy Missile
+  - Player Missile
   layers:
   - Default
   - TransparentFX

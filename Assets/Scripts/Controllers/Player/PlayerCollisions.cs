@@ -21,6 +21,11 @@ public class PlayerCollisions : MonoBehaviour
 
             GetComponent<PlayerManager>().ActivatePowerUp();
         }
+
+        if (collision.CompareTag("Enemy Missile"))
+        {
+            Destroyed(collision);
+        }
     }
 
     private void Destroyed(Collider2D collision)
