@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6880160797215875162}
   - component: {fileID: 3952864664731999276}
   - component: {fileID: 6484405722460393478}
+  - component: {fileID: 8246306925482421124}
   - component: {fileID: 9048040449869812661}
   m_Layer: 0
   m_Name: Player
@@ -250,6 +251,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
   missilePrefab: {fileID: 1761202055222398, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
   numberOfMissiles: 1
+--- !u!114 &8246306925482421124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742679311805458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df34ba0b6a7ecbf43a70adddf9c6bffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPowerUp
 --- !u!114 &9048040449869812661
 MonoBehaviour:
   m_ObjectHideFlags: 0

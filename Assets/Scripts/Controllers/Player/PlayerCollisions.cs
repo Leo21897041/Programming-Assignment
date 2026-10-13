@@ -14,6 +14,13 @@ public class PlayerCollisions : MonoBehaviour
         {
             Destroyed(collision);
         }
+
+        if (collision.CompareTag("Power Up"))
+        {
+            Destroy(collision.gameObject);
+
+            GetComponent<PlayerManager>().ActivatePowerUp();
+        }
     }
 
     private void Destroyed(Collider2D collision)

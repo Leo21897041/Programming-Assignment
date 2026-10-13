@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         decceleration = maxSpeed / deccelerationTime;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Movement();
         LookAtMouse();

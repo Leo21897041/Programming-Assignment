@@ -5,12 +5,14 @@ public class PlayerManager : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public PlayerShooter playerShooter;
+    public PlayerPowerUp playerPowerUp;
 
     public int numberOfAsteroidsDestroyed;
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerShooter = GetComponent<PlayerShooter>();
+        playerPowerUp = GetComponent<PlayerPowerUp>();
     }
     private void Update()
     {
@@ -30,5 +32,9 @@ public class PlayerManager : MonoBehaviour
         {
             playerShooter.numberOfMissiles = 5;
         }
+    }
+    public void ActivatePowerUp()
+    {
+        playerPowerUp.SpawnShields();
     }
 }
