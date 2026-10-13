@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 991243708042905729}
   - component: {fileID: 1342837929361764935}
   m_Layer: 0
-  m_Name: EnemyMissile
+  m_Name: Enemy Missile
   m_TagString: Enemy Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissileCollisions
   destroyParticles: {fileID: 3297678384197589445, guid: a8b2f9876f452614c881b9db0109c62b, type: 3}
   playerManager: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!1 &1819074805867038
 GameObject:
   m_ObjectHideFlags: 0

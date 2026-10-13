@@ -10,9 +10,12 @@ public class EnemySpawner : MonoBehaviour
 
     public float minSpawnRate;
     public float maxSpawnRate;
+    public bool isGameOver;
 
     private void Start()
     {
+        isGameOver = false;
+
         SpawnEnemy();
 
         ChangeSpawnRate();
@@ -20,17 +23,21 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (enemySpawned == null)
+        if (isGameOver) { return; }        
+        else
         {
-            progress += Time.deltaTime;
-        
-            if (progress >= duration)
+            if (enemySpawned == null)
             {
-                SpawnEnemy();
+                progress += Time.deltaTime;
+        
+                if (progress >= duration)
+                {
+                    SpawnEnemy();
 
-                ChangeSpawnRate();
+                    ChangeSpawnRate();
 
-                progress = 0f;
+                    progress = 0f;
+                }
             }
         }
     }

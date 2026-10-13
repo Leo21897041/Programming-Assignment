@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject destroyParticles;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,11 +21,6 @@ public class PlayerCollisions : MonoBehaviour
             Destroy(collision.gameObject);
 
             GetComponent<PlayerManager>().ActivatePowerUp();
-        }
-
-        if (collision.CompareTag("Enemy Missile"))
-        {
-            Destroyed(collision);
         }
     }
 

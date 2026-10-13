@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int numberOfAsteroidsShot;
+    public int numberOfEnemiesShot;
+    public int shotsFired;
+    public int score;
+    public int highScore;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (score > highScore)
+        {
+            highScore = score;
+        }
     }
 }

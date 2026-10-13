@@ -5,22 +5,22 @@ public class EnemyShooting : MonoBehaviour
 {
     public GameObject missilePrefab;
 
+    public EnemyManager enemyManager;
     public float duration;
     public float progress;
-
     public float minFireRate;
-    public float maxFireRate;
-
-    public EnemyMovement enemyMovement;
+    public float maxFireRate; 
     private void Start()
     {
-        ChangeFireRate();
+        enemyManager = GetComponent<EnemyManager>();
 
-        enemyMovement = GetComponent<EnemyMovement>();
+        ChangeFireRate();
     }
     void Update()
     {
-        if (enemyMovement.isPlayerSpotted)
+        if (enemyManager.isGameOver) return;
+
+        else
         {
             progress += Time.deltaTime;
 

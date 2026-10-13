@@ -1,7 +1,10 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
+    public List<GameObject> spawnedAsteroids = new List<GameObject>();
     public float progress;
     public float duration;
     public float minDuration;
@@ -20,6 +23,7 @@ public class Spawner : MonoBehaviour
 
         player = FindFirstObjectByType<PlayerManager>().gameObject;
     }
+
     private void Update()
     {
         if(player == null) { return; }
@@ -29,6 +33,7 @@ public class Spawner : MonoBehaviour
         if (progress >= duration)
         {
             GameObject asteroidObj = Instantiate(asteroidPrefab, transform.position, Quaternion.identity);
+            spawnedAsteroids.Add(asteroidObj);
             asteroidObj.GetComponent<AsteroidMovement>().movementType = movementType;
 
             ChangeTimerDuration();

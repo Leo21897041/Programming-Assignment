@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerShooter playerShooter;
     public PlayerPowerUp playerPowerUp;
 
+    public bool isGameOver;
+
     public int numberOfAsteroidsDestroyed;
 
    private void Start()

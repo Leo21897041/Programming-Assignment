@@ -4,13 +4,20 @@ using UnityEngine.InputSystem;
 public class PlayerShooter : MonoBehaviour
 {
     public GameObject missilePrefab;
-
     public int numberOfMissiles;
+    public LevelManager levelManager;
+
+    private void Start()
+    {
+        levelManager = FindFirstObjectByType<LevelManager>();
+    }
 
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
+            levelManager.shotsFired++;
+
             SpawnMissile(numberOfMissiles);
         }
     }

@@ -4,39 +4,50 @@ using static UnityEngine.UI.ScrollRect;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemyManager enemyManager;
     public float rotationSpeed;
     public Transform playerTransform;
-
     public Vector3 velocity;
     public float acceleration;
     public float accelerationTime;
+    public float decceleration;
+    public float deccelerationTime;
     public float maxSpeed;
-
     public bool isPlayerSpotted;
-
-    public Vector3 randomPosition;
-    public Vector3 destinationPosition;
-    public Vector3 position;
-    public string movementType;
     public float padding;
     private void Start()
     {
-        isPlayerSpotted = false;
-        acceleration = maxSpeed / accelerationTime;
+        enemyManager = GetComponent<EnemyManager>();
 
-        RandomPosition();
+        isPlayerSpotted = false;
+
+        acceleration = maxSpeed / accelerationTime;
+        decceleration = maxSpeed / deccelerationTime;
+
         playerTransform = FindFirstObjectByType<PlayerMovement>().transform;
 
-        velocity = (destinationPosition - transform.position).normalized * acceleration;
+        velocity = (playerTransform.position - transform.position).normalized * acceleration;
     }
     void Update()
     {
-        SpotPlayer();
-        Movement();
-        StayWithinScreenBounds();
-        Despawner();
-    }
+        if (enemyManager.isGameOver)
+        {
+            Deccelerate();
+        }
+        else
+        {
+            SpotPlayer();
+            Movement();
+            StayWithinScreenBounds();
+            Despawner();
+        }
 
+        transform.position += velocity * Time.deltaTime;
+    }
+    public void Deccelerate()
+    {
+        velocity -= velocity.normalized * decceleration * Time.deltaTime;
+    }
     private void Movement()
     {
         if (isPlayerSpotted)
@@ -46,15 +57,11 @@ public class EnemyMovement : MonoBehaviour
 
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
         velocity.y = Mathf.Clamp(velocity.y, -maxSpeed, maxSpeed);
-
-        transform.position += velocity * Time.deltaTime;
     }
 
     private void MoveTowardsPlayer()
     {
-        destinationPosition = playerTransform.position;
-
-        Vector3 direction = (destinationPosition - transform.position).normalized;
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
 
         velocity += direction * acceleration * Time.deltaTime;
     }
@@ -121,20 +128,6 @@ public class EnemyMovement : MonoBehaviour
         }
 
         transform.position = Camera.main.ScreenToWorldPoint(screenPosition);
-    }
-    private void RandomPosition()
-    {
-        switch (movementType)
-        {
-            case "Left": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(0 - (padding * 3), Random.Range(0, Screen.height), 0)); break;
-            case "Right": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + (padding * 3), Random.Range(0, Screen.height), 0)); break;
-            case "Up": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Screen.height + (padding * 3), 0)); break;
-            case "Down": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), 0 - (padding * 3), 0)); break;
-        }
-
-        randomPosition.z = 0f;
-
-        destinationPosition = randomPosition;
     }
     private void Despawner()
     {

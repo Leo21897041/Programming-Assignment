@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 793022320302444163}
-  - component: {fileID: 1028621342795117121}
+  - component: {fileID: 2015309727151572849}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Asteroid Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1028621342795117121
+--- !u!114 &2015309727151572849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2543736103569135439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfef06e7abb03844ca796b2b9b8bd148, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d3e68581ea0eec479baa853e506bb13, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  m_EditorClassIdentifier: Assembly-CSharp::AsteroidSpawner
+  spawnedAsteroids: []
   progress: 0
   duration: 0
-  minDuration: 0.5
-  maxDuration: 2.5
+  minDuration: 1.5
+  maxDuration: 3
   asteroidPrefab: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
-  movementType: Move Left
-  spawnerPosition: 
-  padding: 0
+  movementType: Right
+  spawnerPosition: Left
+  padding: 25
+  player: {fileID: 0}

@@ -50,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
             direction += Vector3.right;
         }
 
-
         if (!Keyboard.current.anyKey.isPressed)
         {
             velocity -= velocity.normalized * decceleration * Time.deltaTime;

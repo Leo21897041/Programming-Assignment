@@ -16,15 +16,22 @@ public class AsteroidMovement : MonoBehaviour
     public float maxFloatDistance;
     public float moveProgress;
     public float moveDuration;
-
     public float padding;
     public float minDistanceToPlayer = 1f;
 
-    [Header("Acceleration & Velocity")]
+    [Header("Acceleration, Decceleration, & Velocity")]
     public Vector3 velocity;
     public float acceleration;
     public float accelerationTime;
+    public float decceleration;
+    public float deccelerationTime;
     public float maxSpeed;
+    
+    [Header("State")]
+    public bool isGameOver;
+
+    [Header("Scripts")]
+    public AsteroidSpawner asteroidSpawner;
 
     void Start()
     {       
@@ -33,14 +40,24 @@ public class AsteroidMovement : MonoBehaviour
         playerTransform = FindFirstObjectByType<PlayerMovement>().transform;
 
         acceleration = maxSpeed / accelerationTime;
+        decceleration = maxSpeed / deccelerationTime;
 
         velocity = (destinationPosition - transform.position).normalized * acceleration;
     }
 
     void Update()
     {
-        Movement();
-        Despawner();
+        if (isGameOver)
+        {
+            Deccelerate();
+        }
+        else
+        {
+            Movement();
+            Despawner();
+        }
+
+        transform.position += velocity * Time.deltaTime;
     }
 
     public void Movement()
@@ -57,8 +74,10 @@ public class AsteroidMovement : MonoBehaviour
 
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
         velocity.y = Mathf.Clamp(velocity.y, -maxSpeed, maxSpeed);
-
-        transform.position += velocity * Time.deltaTime;
+    }
+    public void Deccelerate()
+    {
+        velocity -= velocity.normalized * decceleration * Time.deltaTime;
     }
 
     private void MoveTowardsPlayer()
@@ -66,8 +85,6 @@ public class AsteroidMovement : MonoBehaviour
         destinationPosition = playerTransform.position;
 
         Vector3 direction = (destinationPosition - transform.position).normalized;
-
-        velocity += direction * acceleration * Time.deltaTime;
     }
     private void RandomPosition()
     {
@@ -95,6 +112,7 @@ public class AsteroidMovement : MonoBehaviour
             transform.position.y < bottomDespawnBoundary ||
             transform.position.y > topDespawnBoundary)
         {
+            asteroidSpawner.spawnedAsteroids.Remove(this);
             Destroy(gameObject);
         }
     }

@@ -15,6 +15,10 @@ public class PowerUpCollisions : MonoBehaviour
         {
             Destroyed(collision);
         }
+        if(collision.CompareTag("Enemy"))
+        {
+            Destroyed(collision);
+        }
     }
 
     private void Destroyed(Collider2D collision)

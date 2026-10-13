@@ -187,4 +187,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   acceleration: 0
   accelerationTime: 3
+  decceleration: 0
+  deccelerationTime: 5
   maxSpeed: 10
+  isGameOver: 0
+  asteroidSpawner: {fileID: 0}
