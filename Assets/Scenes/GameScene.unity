@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 1094916703}
   - component: {fileID: 1094916704}
   m_Layer: 0
-  m_Name: Level Manager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1005,6 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108007623}
+  - component: {fileID: 2108007624}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1027,12 +1028,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108007624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108007622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1199c53fa2282b40b2cbeb28260a893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerManager: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1395548866}
   - {fileID: 2030902519}
-  - {fileID: 1094916703}
   - {fileID: 1550068683}
+  - {fileID: 1094916703}
   - {fileID: 2108007623}
