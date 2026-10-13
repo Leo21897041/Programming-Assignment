@@ -5,7 +5,9 @@ public class AsteroidMovement : MonoBehaviour
 {
     [Header("Position")]
     public Vector3 randomPosition;
+    public Vector3 destinationPosition;
     public Vector3 position;
+    public string movementType;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -15,27 +17,51 @@ public class AsteroidMovement : MonoBehaviour
     public float moveDuration;
 
     void Start()
-    {
-        randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0));
-        randomPosition.z = 0f;
+    {       
+        RandomPosition();
     }
 
     void Update()
     {
         Movement();
+        Despawner();
     }
 
     public void Movement()
     {        
-        Vector3 direction = (randomPosition - transform.position).normalized;
+        Vector3 direction = (destinationPosition - transform.position).normalized;
+
         transform.position += moveSpeed * direction * Time.deltaTime;
-
-        float distance = Vector3.Distance(transform.position, randomPosition);
-
-        if (distance <= arrivalDistance)
+    }
+    
+    private void RandomPosition()
+    {
+        switch (movementType)
         {
-            randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0));
-            randomPosition.z = 0f;
+            case "Left": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(0 - padding, Random.Range(0, Screen.height), 0)); break;
+            case "Right": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + padding, Random.Range(0, Screen.height), 0)); break;
+            case "Up": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Screen.height + padding, 0)); break;
+            case "Down": randomPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), 0 - padding, 0)); break;
+        }
+
+        randomPosition.z = 0f;
+
+        destinationPosition = randomPosition;
+    }
+    private void Despawner()
+    {
+        float leftDespawnBoundary = Camera.main.ScreenToWorldPoint(new Vector3(0 - padding, 0, 0)).x;
+        float rightDespawnBoundary = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + padding, 0, 0)).x;
+
+        float bottomDespawnBoundary = Camera.main.ScreenToWorldPoint(new Vector3(0, 0 - padding, 0)).y;
+        float topDespawnBoundary = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + padding, 0)).y;
+
+        if (transform.position.x < leftDespawnBoundary && movementType == "Left"||
+            transform.position.x > rightDespawnBoundary && movementType == "Right"||
+            transform.position.y < bottomDespawnBoundary && movementType == "Down"||
+            transform.position.y > topDespawnBoundary && movementType == "Up")
+        {
+            Destroy(gameObject);
         }
     }
 }

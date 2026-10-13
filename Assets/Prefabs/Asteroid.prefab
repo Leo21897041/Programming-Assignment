@@ -174,9 +174,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AsteroidMovement
   randomPosition: {x: 0, y: 0, z: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
+  movementType: 
   moveSpeed: 3
   arrivalDistance: 1
   maxFloatDistance: 20
   moveProgress: 0
   moveDuration: 3
+  padding: 25
