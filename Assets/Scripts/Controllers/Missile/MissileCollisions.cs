@@ -18,11 +18,6 @@ public class MissileCollisions : MonoBehaviour
 
             playerManager.numberOfAsteroidsDestroyed++;
         }
-
-        if (collision.CompareTag("Enemy"))
-        {
-            Destroyed(collision);
-        }
     }
 
     private void Destroyed(Collider2D collision)

@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   playerMovement: {fileID: 0}
   playerShooter: {fileID: 0}
+  playerPowerUp: {fileID: 0}
   numberOfAsteroidsDestroyed: 0
 --- !u!114 &3952864664731999276
 MonoBehaviour:
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243b90c0ad69b674682942ba6e161557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
-  missilePrefab: {fileID: 1761202055222398, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
+  missilePrefab: {fileID: 1761202055222398, guid: 572e10e7246702c42973e1dc9eaef4a5, type: 3}
   numberOfMissiles: 1
 --- !u!114 &8246306925482421124
 MonoBehaviour:
@@ -263,6 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df34ba0b6a7ecbf43a70adddf9c6bffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPowerUp
+  shieldPrefab: {fileID: 1273894435109820, guid: b262926197932c945b68169dd6fd6c5c, type: 3}
+  radius: 2
 --- !u!114 &9048040449869812661
 MonoBehaviour:
   m_ObjectHideFlags: 0
