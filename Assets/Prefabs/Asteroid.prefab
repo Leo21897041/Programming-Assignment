@@ -177,9 +177,14 @@ MonoBehaviour:
   destinationPosition: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
   movementType: 
-  moveSpeed: 3
+  playerTransform: {fileID: 0}
   arrivalDistance: 1
   maxFloatDistance: 20
   moveProgress: 0
   moveDuration: 3
   padding: 25
+  minDistanceToPlayer: 5
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: 0
+  accelerationTime: 3
+  maxSpeed: 10

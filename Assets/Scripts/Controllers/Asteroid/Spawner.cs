@@ -12,13 +12,18 @@ public class Spawner : MonoBehaviour
     public string spawnerPosition;
     public float padding;
 
+    public GameObject player;
     private void Start()
     {
         ChangeTimerDuration();
         ChangeSpawnerPosition();
+
+        player = FindFirstObjectByType<PlayerManager>().gameObject;
     }
     private void Update()
     {
+        if(player == null) { return; }
+
         progress += Time.deltaTime;
 
         if (progress >= duration)
