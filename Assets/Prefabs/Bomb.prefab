@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpCollisions
   destroyParticles: {fileID: 3297678384197589445, guid: a8b2f9876f452614c881b9db0109c62b, type: 3}
-  padding: 25
+  padding: 75
 --- !u!1 &1369739229142278
 GameObject:
   m_ObjectHideFlags: 0

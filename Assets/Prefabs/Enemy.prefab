@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4613894731627482546}
   - component: {fileID: 7215568369241751132}
   - component: {fileID: 6404848625059262993}
-  - component: {fileID: 7592523739449253151}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -100,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441112159ebc86a4dbd812cfb32fbccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
+  isGameOver: 0
 --- !u!114 &7215568369241751132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b82fb80adebcb499b80e6339ce9ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyManager: {fileID: 0}
   rotationSpeed: 360
   playerTransform: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -135,24 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooting
   missilePrefab: {fileID: 1761202055222398, guid: 561200a1f15bfaa449ccc4cb56a3a980, type: 3}
+  enemyManager: {fileID: 0}
   duration: 0
   progress: 0
   minFireRate: 0.5
   maxFireRate: 2
-  enemyMovement: {fileID: 0}
---- !u!114 &7592523739449253151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409900303673908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db50d312135f0fb4baf9c9ccf1085369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollisions
-  destroyParticles: {fileID: 3297678384197589445, guid: a8b2f9876f452614c881b9db0109c62b, type: 3}
 --- !u!1 &1957684609019034
 GameObject:
   m_ObjectHideFlags: 0
