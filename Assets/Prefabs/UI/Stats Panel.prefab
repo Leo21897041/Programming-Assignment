@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc42e90e2e70e9e478347043170c479f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsPanel
-  delay: 0.75
+  delay: 0.25
   enemiesText: {fileID: 6100650102275875919}
   asteroidText: {fileID: 6161126635235267785}
   highScoreText: {fileID: 2975064744533221049}
