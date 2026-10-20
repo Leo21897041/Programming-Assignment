@@ -26,7 +26,7 @@ public class PowerUpMovement : MonoBehaviour
         angle += Time.deltaTime * speed;
         
         if (!isLaunched)
-        {        
+        {
             if (speed > maxSpeed * 1.5f || playerTransform == null)
             {
                 isLaunched = true;

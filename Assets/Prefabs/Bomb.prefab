@@ -115,8 +115,8 @@ MonoBehaviour:
   speed: 1
   angle: 0
   playerTransform: {fileID: 0}
-  acceleration: 60
-  maxSpeed: 600
+  acceleration: 100
+  maxSpeed: 500
   isLaunched: 0
 --- !u!114 &-4184104971270408662
 MonoBehaviour:
